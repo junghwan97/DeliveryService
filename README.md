@@ -48,7 +48,8 @@
 
 
 ## 회원 <br/>
-### 회원 등록 : POST members
+### 회원 등록 : POST members/signUp
+### 회원 로그인 : POST members/signIn
 ### 회원 정보 조회 : GET members/{memberId}
 ### 회원 정보 수정 : PUT members/{memberId}
 ### 회원 탈퇴(삭제) : DELETE members/{memberId}
