@@ -1,8 +1,6 @@
 package com.example.deliveryapi.food;
 
 
-import java.util.List;
-
 public class Food {
 
     int id;
