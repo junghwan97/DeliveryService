@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class FoodDTO {
     private String name;
-    private int price;
+    private Integer price;
     private String description;
     private String belong;
 
