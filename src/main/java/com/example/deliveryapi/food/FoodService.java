@@ -3,30 +3,34 @@ package com.example.deliveryapi.food;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class FoodService {
 
-    private final FoodRepository foodRepository;
+    private final FoodJpaRepository foodJpaRepository;
 
     @Autowired // 생성자가 하나만 있을 경우 생략 가능
-    public FoodService (FoodRepository foodRepository){
-        this.foodRepository = foodRepository;
+    public FoodService (FoodJpaRepository foodJpaRepository){
+        this.foodJpaRepository = foodJpaRepository;
     }
 
-    public Food selectFoodById(int id) {
-
-        return foodRepository.selectFoodById(id);
+    public FoodDTO selectFoodById(int id) {
+        Optional<Food> food = foodJpaRepository.findById(id);
+        return FoodDTO.fromEntity(food.orElse(null));
     }
 
-    public void postFood(Food food) {
-        foodRepository.postFood(food);
+    public void postFood(FoodDTO dto) {
+        Food food = dto.toEntity();
+        foodJpaRepository.save(food);
     }
 
-    public void updateFood(int id, Food food) {
-        foodRepository.updateFood(id, food);
+    public void updateFood(int id, FoodDTO dto) {
+        Food food = dto.toEntity();
+        foodJpaRepository.save(food);
     }
 
     public void deleteFood(int id) {
-        foodRepository.deleteFood(id);
+        foodJpaRepository.deleteById(id);
     }
 }
