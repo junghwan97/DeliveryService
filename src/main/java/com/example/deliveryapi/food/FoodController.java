@@ -9,30 +9,31 @@ public class FoodController {
     private final FoodService foodService;
 
     @Autowired
-    public FoodController(FoodService foodService){
+    public FoodController(FoodService foodService) {
         this.foodService = foodService;
     }
 
     @GetMapping("/foods/{id}")
-    public Food selectFood(@PathVariable("id") int id){
-        return foodService.selectFoodById(id);
+    public FoodDTO selectFood(@PathVariable("id") int id) {
+        FoodDTO dto = foodService.selectFoodById(id);
+        return dto;
     }
 
     // 사장님 권한만 실행 가능
     @PostMapping("/foods")
-    public void postFood(Food food){
-        foodService.postFood(food);
+    public void postFood(FoodDTO dto) {
+        foodService.postFood(dto);
     }
 
     // 사장님 권한만 실행 가능
     @PutMapping("/foods/{id}")
-    public void updateFood(@PathVariable("id") int id, Food food){
-        foodService.updateFood(id, food);
+    public void updateFood(@PathVariable("id") int id, FoodDTO dto) {
+        foodService.updateFood(id, dto);
     }
 
     // 사장님 권한만 실행 가능
     @DeleteMapping("/foods/{id}")
-    public void deleteFood(@PathVariable("id") int id){
+    public void deleteFood(@PathVariable("id") int id) {
         foodService.deleteFood(id);
     }
 
