@@ -20,6 +20,14 @@ public class Food {
     private String description;
     private String belong;
 
+    public Food(int id, String name, Integer price, String description, String belong) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.belong = belong;
+    }
+
     public Food() {
 
     }
