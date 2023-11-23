@@ -32,4 +32,11 @@ public class Food {
         this.description = description;
         this.belong = belong;
     }
+
+    public void update(String name, Integer price, String description, String belong){
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.belong = belong;
+    }
 }
