@@ -1,11 +1,16 @@
-package com.example.deliveryapi.food;
+package com.example.deliveryapi.food.dto;
 
+import com.example.deliveryapi.food.Food;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 @Builder
-public class FoodDTO {
+public class PostFoodRequest {
     private String name;
     private Integer price;
     private String description;
@@ -22,8 +27,8 @@ public class FoodDTO {
     }
 
     // Entity를 DTO로 변환하는 메서드
-    public static FoodDTO fromEntity(Food entity) {
-        return FoodDTO.builder()
+    public static PostFoodRequest fromEntity(Food entity) {
+        return PostFoodRequest.builder()
                 .name(entity.getName())
                 .price(entity.getPrice())
                 .description(entity.getDescription())
